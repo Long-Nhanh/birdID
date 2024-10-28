@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bird Classifier - Identify Birds Easily</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <h1>BirdID</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="upload">Upload</a></li>
+            <li><a href="about">About</a></li>
+        </ul>
+    </nav>
+ 
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-slideshow">
+            <div class="hero-slide active" style="background-image:url('/static/img/hero1.webp')"></div>
+            <div class="hero-slide" style="background-image:url('/static/img/hero2.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('/static/img/hero3.jpg')"></div>
+        </div>
+        <div class="hero-content">
+            <h2>Identify Birds Instantly</h2>
+            <p>Upload an image of a bird and our system will help you identify its species.</p>
+            <a href="/" class="hero-btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section id="upload" class="upload-section">
+        <h2>Upload Bird Image</h2>
+        <!-- <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+            <label for="bird-image" class="custom-file-upload">Choose a file</label>
+            <input type="file" id="bird-image" name="bird-image" accept="image/*" required>
+            <button type="submit" class="submit-btn">Identify Bird</button>
+        </form> -->
+  
+        <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data" class="upload-form">
+            <div class="form-group">
+                <label for="model" class="custom-file-upload">Choose AI Model</label>
+                <div class="model-options">
+                    <label class="radio">
+                        <input type="radio" name="model" value="mobilenet" checked>
+                        <span>MobileNet</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="model" value="resnet">
+                        <span>ResNet</span>
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="model" value="efficientnet">
+                        <span>EfficientNet</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="file">Upload a Bird Image:</label>
+                <input type="file" name="file" class="upload-file" accept="image/*" required>
+            </div>
+
+            <button type="submit" class="submit-btn">Classify Bird</button>
+        </form>
+    </section>
+
+    <!-- Result Section -->
+    <section id="results" class="results-section">
+        <h2>Bird Identification Results</h2>
+
+        {% if prediction %}
+        <div class="result-container">
+            <!-- Bird Image on the Left -->
+            <div class="image-container">
+                <img id="bird-img" src="{{ img_path }}" alt="Bird Image">
+            </div>
+
+            <!-- Prediction Details on the Right -->
+            <div class="details-container">
+            
+                <!-- Confidence List -->
+                <h3>Prediction Confidence Scores:</h3>
+                <ul class="confidence-list">
+                    {% for species, confidence in prediction_confidences.items() %}
+                    <li>
+                        <a href="{{ url_for('bird_detail', bird_name=species) }}">{{ species }}</a>: 
+                        {{ confidence | round(2) }}%
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% else %}
+        <p>No bird identified yet. Please upload an image.</p>
+        {% endif %}
+    </section>
+
+    <script type="text/javascript" src="/static/script.js" ></script>
+        
+</body>
+</html>

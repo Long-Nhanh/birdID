@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classification Results</title>
+</head>
+<body>
+    <h1>Classification Results</h1>
+    <p>Here are the predicted classes from each model:</p>
+    <img src="{{ url_for('uploaded_file', filename=filename) }}" alt="Uploaded Image" style="max-width: 300px;">
+    
+    <h3>Results</h3>
+    <ul>
+        <li>ResNet50: {{ predicted_classes['resnet50'] }}</li>
+        <li>MobileNetV3: {{ predicted_classes['mobilenetv3'] }}</li>
+        <li>InceptionV3: {{ predicted_classes['inceptionv3'] }}</li>
+        <li>EfficientNetB0: {{ predicted_classes['efficientnetb0'] }}</li>
+    </ul>
+
+    <a href="/">Upload another image</a>
+</body>
+</html>

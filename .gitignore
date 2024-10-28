@@ -1,20 +1,9 @@
-# File nhạy cảm
-.env
-config.yml
+# Loại trừ các thư mục không cần thiết
+data/
+uploads/
 
-# Các thư mục build và dependency
-node_modules/
-__pycache__/
-dist/
-build/
-
-# File tạm và hệ điều hành
+# File hệ thống và tạm thời
 *.log
 *.tmp
 .DS_Store
 Thumbs.db
-
-# File dữ liệu lớn hoặc không cần thiết
-*.sql
-*.csv
-*.mp4

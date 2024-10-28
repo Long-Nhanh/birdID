@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ bird_name }} - Bird Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1 class="logo">Bird Identifier</h1>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="bird-details">
+            <h2>{{ bird_name }}</h2>
+            <img src="{{ bird_image }}" alt="{{ bird_name }}" class="bird-img">
+            <p>{{ bird_description }}</p>
+
+            <h3>Basic Information:</h3>
+            <ul>
+                <li>Scientific Name: {{ scientific_name }}</li>
+                <li>Conservation Status: {{ conservation_status }}</li>
+                <li>Habitat: {{ habitat }}</li>
+                <li>Diet: {{ diet }}</li>
+                <li>Size: {{ size }}</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 Bird Identifier. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

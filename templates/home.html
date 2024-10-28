@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Bird Classifier - Identify Birds Easily</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->	
+<link rel="shortcut icon" href="https://www.rungngapmancangio.org/favicon.ico" type="image/x-icon"/>
+<link href="https://www.rungngapmancangio.org/theme/frontend/default/css/font.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+<link href="https://www.rungngapmancangio.org/public/css/reset.css" rel="stylesheet" type="text/css">
+<link href="https://www.rungngapmancangio.org/public/css/debug.css" rel="stylesheet" type="text/css">
+<link href="https://www.rungngapmancangio.org/public/css/box.css" rel="stylesheet" type="text/css">
+<link href="https://www.rungngapmancangio.org/theme/frontend/default/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="https://www.rungngapmancangio.org/theme/frontend/default/css/fonts/fontawesome-5.0.8/css/fontawesome-all.min.css" rel="stylesheet" type="text/css">
+<link href="https://www.rungngapmancangio.org/theme/frontend/default/css/fonts/iconic/css/material-design-iconic-font.min.css" rel="stylesheet" type="text/css">
+<link href="https://www.rungngapmancangio.org/theme/frontend/default/css/vendor/icofont/icofont.min.css" rel="stylesheet" type="text/css">
+<link href="https://www.rungngapmancangio.org/theme/frontend/default/css/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" type="text/css">
+<link href="https://www.rungngapmancangio.org/theme/frontend/default/css/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet" type="text/css">
+<link href="https://www.rungngapmancangio.org/theme/frontend/default/css/vendor/venobox/venobox.css" rel="stylesheet" type="text/css">
+<link href="https://www.rungngapmancangio.org/theme/frontend/default/css/vendor/aos/aos.css" rel="stylesheet" type="text/css">
+<link href="https://www.rungngapmancangio.org/theme/frontend/default/css/style.css" rel="stylesheet" type="text/css">
+<link href="https://www.rungngapmancangio.org/public/css/media.css" rel="stylesheet" type="text/css">
+<link href="https://www.rungngapmancangio.org/theme/frontend/default/css/custom-2.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body class="animsition-rm">
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <h1>BirdID</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="upload">Upload</a></li>
+            <li><a href="about">About</a></li>
+        </ul>
+    </nav>
+ 
+    <!-- <section  id="home" class="hero-section" class="d-flex align-items-center">
+        <div class="hero-content">
+            <h2>Identify Birds Instantly</h2>
+            <p>Upload an image of a bird and our system will help you identify its species.</p>
+            <a href="upload" class="hero-btn">Get Started</a>
+        </div>
+    </section> -->
+
+    <section id="home" class="hero-section">
+        <div class="hero-slideshow">
+            <div class="hero-slide active" style="background-image:url('/static/img/Ashy-Drongo-\(Blackish\)_12.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('/static/img/garrulax-annamensis.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('/static/img/hero3.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('/static/img/images2444173_image007.jpg')"></div>
+            <div class="hero-slide" style="background-image:url('/static/img/Asian-Green-Bee-eater_15.jpg')"></div>
+        </div>
+        <div class="hero-content">
+            <h2>Identify Birds Instantly</h2>
+            <p>Upload an image of a bird and our system will help you identify its species.</p>
+            <a href="upload" class="hero-btn">Get Started</a>
+        </div>
+    </section>
+      
+<main id="main" data-aos="fade-up">
+<section id="about" class="about">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Tổng Quan</h2>
+      <h3>Khu dự trữ sinh quyển rừng ngập mặn <span style="color: orange;">Cần Giờ</span></h3>
+    </div>
+    <div class="row">
+      <div class="col-lg-6" data-aos="zoom-out" data-aos-delay="100">
+        <img src="https://www.rungngapmancangio.org/public/image/bando-phan-vung-kdtsq.jpg" class="img-fluid" alt="">
+        <p class="font-italic" style="font-size: 12px;">Hình 1. Bản đồ phân vùng KDTSQ </p>
+      </div>
+      <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
+        <p class="font-italic">
+      		Khu Dự trữ Sinh quyển Thế giới Rừng ngập mặn (DTSQTG RNM) Cần Giờ là Khu DTSQTG đầu tiên của Việt Nam, được UNESCO công nhận vào ngày 21/1/2000.
+      	</p>
+        <h3>Vị trí địa lý và dân số</h3>
+        <p>
+        Khu DTSQTG RNM Cần Giờ thuộc khu vực hạ lưu hệ thống sông Đồng Nai – Sài Gòn, nằm ở phía Đông Nam Thành phố Hồ Chí Minh.<br/>
+Tổng diện tích: 70.445,34 ha <br/>
+Dân số: hơn 75.000 người (2018), mật độ dân số 108 người/km2 .Dân cư tập trung sinh sống trong vùng chuyển tiếp, riêng vùng lõi và vùng đệm chỉ có các hộ dân giữ rừng.
+        </p>
+        <h3>Các vùng chức năng</h3>
+            <p>
+            	Khu DTSQTG RNM Cần Giờ bao gồm toàn bộ diện tích của rừng phòng hộ Cần Giờ, và diện tích hành chính còn lại của huyện Cần Giờ, chia làm 3 vùng:<br/>
+    1. Vùng lõi có diện tích 6.134,43 ha, có chức năng bảo tồn hệ sinh thái rừng gập mặn cả rừng trồng và rừng tự nhiên ; bảo tồn cảnh quan RNM và các môi trường sống của động vật hoang dã, đặc biệt là chim nước ; bảo tồn thủy vực, các bãi bồi dọc bờ sông và ven biển để tái sinh tự nhiên cả thực vật lẫn động vật ; nghiên cứu khoa học và du lịch sinh thái có giới hạn.<br/>
+    2. Vùng đệm có diện tích 29.152,10 ha đất rừng và 12.763,56 ha diện tích mặt nước), có chức năng phục hồi các hệ sinh thái dựa trên các quần xã chiếm ưu thế ; bảo vệ vùng lõi ; tạo không gian lớn hơn cho thú hoang hã ngoài vùng lõi; tạo ra cảnh quan tự nhiên và văn hóa nhân văn phục vụ cho su lịch sinh thái; tạo điều kiện cho các mô hình lâm ngư kết hợp thân thiện với môi trường.<br/>
+    3. Vùng chuyển tiếp  có diện tích 13.227,79 ha đất rừng và 7.267,47 ha mặt nước, gồm các khu vực còn lại của huyện Cần Giờ. Vùng chuyển tiếp có chức năng khuyến khích các mô hình phát triển kinh tế, hợp tác với sự tham gia của cán bộ quản lý, các cơ sở kinh tế, các tổ chức đoàn thể, tôn giáo, văn hóa, xã hội, các nhà khoa học, các tổ chức giáo dục…
+            	
+            </p>
+      </div>
+      
+    </div>
+	
+	<div class="row">
+         <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
+            <h3>Đa dạng sinh học</h3>
+            <p>
+            	Tổng hợp và cập nhật thông tin về đa dạng sinh học tại Khu DTSQTG RNM Cần Giờ:<br/>
+                + Hệ thực vật: có 318 loài thực vật bậc cao<br/>
+                -	Nhóm cây ngập mặn chủ yếu: 		37 loài<br/>
+                -	Nhóm cây tham gia rừng ngập mặn: 	56 loài<br/>
+                -	Nhóm cây du nhập: 			225 loài<br/>
+                + Hệ động vật:<br/>
+                -	Côn trùng: 89 loài<br/>
+                -	Cá: 282 loài<br/>
+                -	Lưỡng cư: 36 loài<br/>
+                -	Bò sát: 36 loài<br/>
+                -	Chim: 164 loài<br/>
+                -	Thú: 35 loài<br/>
+                + Phiêu sinh vật: 66 loài động vật nổi, 66 loài thực vật nổi.<br/>
+            </p>
+         </div>
+         <div class="col-lg-6" data-aos="zoom-out" data-aos-delay="100">
+            <img src="/static/img/bird-home.jpg" class="img-fluid" alt="">
+            <p class="font-italic" style="font-size: 12px;">Hình 2. Sân chim Cần Giờ</p>
+         </div>
+	</div>
+	<div class="row">
+		 
+         <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
+            <h3>Các khu bảo tồn và loài sinh vật quý hiếm</h3>
+            <p>
+            	Trong Khu DTSQTG RNM Cần Giờ có 3 khu bảo tồn các loài động vật, bao gồm: <br/>
+                •	Khu bảo tồn chim (Sân Chim Vàm Sát) là môi trường sống của khoảng 2.000 cá thể chim thuộc 33 loài, trong đó có 26 loài định cư và 07 loài di cư.<br/> 
+                •	Khu bảo tồn dơi (Đầm Dơi) tại tiểu khu 15a là nơi trú ngụ của hơn 500 cá thể dơi, chủ yếu là loài Dơi ngựa (Pteropus lylei);<br/>
+                •	Khu bảo tồn khỉ (Khu Đảo Khỉ), với đàn Khỉ đuôi dài (Maccaca fascicularis) đã phát triển trên 1.000 con.<br/>
+                Ngoài ra, Khu DTSQTG RNM còn là nơi sinh sống của nhiều loài động thực vật quý hiếm thuộc Danh mục Sách đỏ Việt Nam (2007). Về thực vật có 02 loài là Cóc đỏ (Lumnitzera littorea) và Chùm lé (Azima sarmentosa); động vật có 09 loài bao gồm:<br/> 
+                •	Thú: Rái cái thường (Lutra lutra), Rái cá vuốt bé (Aonyx cinereus), Mèo cá (Prionailurus viverrinus), Khỉ đuôi dài (Maccaca fascicularis);<br/>
+                •	Chim: Bồ nông chân xám (Pelecanus philippensis), Cổ rắn (Anhinga melanogaster), Choắt mỏ vàng (Tringa guttifer), <br/>
+                •	Bò sát: Rắn hổ chúa (Ophiophagus hannah),<br/>
+                •	Cá: Cá mang rổ (Toxotes chatareus). <br/>
+            </p>
+         </div>
+         <div class="col-lg-6" data-aos="zoom-out" data-aos-delay="100">
+            <img src="/static/img/chim-giang-sen.jpg" class="img-fluid" alt="">
+            <p class="font-italic" style="font-size: 12px;">Hình 3. Chim Giang Sen</p>
+         </div>
+	</div>
+  </div>
+</section><!-- End About Section -->
+       
+</main>
+  	
+</script>
+        <!-- Back to top -->
+        <div id="preloader"></div>
+        <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+    <script type="text/javascript" src="/static/script.js" ></script>
+    <script src="https://www.rungngapmancangio.org/public/js/jquery.min.js"></script>
+    <script src="https://www.rungngapmancangio.org/public/js/jquery.ck.js"></script>
+    <script src="https://www.rungngapmancangio.org/public/js/responsive.js"></script>
+    <script src="https://www.rungngapmancangio.org/public/js/modify.js"></script>
+    <script src="https://www.rungngapmancangio.org/public/js/global_functions.js"></script>
+    <script src="https://www.rungngapmancangio.org/public/js/data.php"></script>
+    <script src="https://www.rungngapmancangio.org/theme/frontend/default/js/vendor/jquery/jquery.min.js"></script>
+    <script src="https://www.rungngapmancangio.org/theme/frontend/default/js/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.rungngapmancangio.org/theme/frontend/default/js/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="https://www.rungngapmancangio.org/theme/frontend/default/js/vendor/php-email-form/validate.js"></script>
+    <script src="https://www.rungngapmancangio.org/theme/frontend/default/js/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="https://www.rungngapmancangio.org/theme/frontend/default/js/vendor/counterup/counterup.min.js"></script>
+    <script src="https://www.rungngapmancangio.org/theme/frontend/default/js/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="https://www.rungngapmancangio.org/theme/frontend/default/js/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="https://www.rungngapmancangio.org/theme/frontend/default/js/vendor/venobox/venobox.min.js"></script>
+    <script src="https://www.rungngapmancangio.org/theme/frontend/default/js/vendor/aos/aos.js"></script>
+    <script src="https://www.rungngapmancangio.org/theme/frontend/default/js/main.js"></script>
+<script>
+		$(document).ready(function(){
+			setInterval(function(){
+				let r = Math.floor(Math.random() * 11) + 1; 
+				$("#hero").attr('r',r);
+				let url = $("#hero").attr('p') + 'public/image/hinh-nen/' + r +  '.jpg';
+				$("#hero").stop().animate({opacity: 0},1000,function(){
+                    $(this).css({'background-image': "url('" + url + "')"})
+                               .animate({opacity: 1},{duration:1000});
+                 });
+				//$("#hero").attr('style','background-image:url(' + $("#hero").attr('p') + 'public/image/hinh-nen/' + r + '.jpg)');
+			},10000)
+		});
+
+        window.onscroll = function() {
+            var header = document.getElementById("header");
+            if (window.pageYOffset > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        };
+
+	</script>
+</body>
+</html>
